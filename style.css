@@ -20,7 +20,7 @@ body {
 	padding: 20px;
 }
 form, .content {
-	width: 40%;
+	width: 80%; /* You can tweak it to you liking */
 	margin: 0px auto;
 	padding: 20px;
 	border: 1px solid #0473f9;

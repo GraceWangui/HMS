@@ -1,18 +1,4 @@
- <?php 
-include('../functions.php');
-
-if (!isAdmin()) {
-	$_SESSION['msg'] = "You must log in first";
-	header('location: ../login.php');
-}
-
-if (isset($_GET['logout'])) {
-	session_destroy();
-	unset($_SESSION['user']);
-	header("location: ../login.php");
-}
-?>
- 
+<?php include('func.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,69 +38,54 @@ if (isset($_GET['logout'])) {
     #inputbtn:hover{cursor:pointer;}
   </style>
   <body style="padding-top:50px;">
- <div class="jumbotron" style="background:url('images/cardback.jpg') no-repeat;background-size: cover;height: 300px;"></div>
-   <div class="container-fluid" style="margin-top:10px;">
-<div class="row">
-  <div class="col-md-3">
-	  	 <div class="list-group">
-	  	 	<a href=""class="list-group-item active"style="background color:#3498DB;color:#ffffff;">Doc Update profile</a>
-	  	 </div>
-	  	 
-         <div class="list-group">
-	  	 	<a href="appointments.php"class="list-group-item ">Appointments</a>
-	  	 </div>
-	  	 <div class="list-group">
-	  	 	<a href="about_goodhealth.php"class="list-group-item ">Hospital information</a>
-	  	 </div>
-   </div> 
-   <div class="col-md-8">
-   	  <div class="card">
-	   	  <div class="card-body" style="background-color:#3498DB;color:#ffffff;">
-	   	  Profile Update
+ <div class="jumbotron" id="ab1"></div>
+  <div class="container-fluid" style="margin-top:10px;">
+    <div class='card'>
+      <div class="card-body"style="background-color:#3498DB;color: #ffffff;">
+        <div class="row">
+          <div class="col-md-1">
 
-	   	  	</div>
-  	   	  	  <div class="card-body">
-    	   	  		<form class="form-group"action="func.php"method="post">
-    	   	  			<label>Full Name :</label>
-    	   	  			<input type="text" name="fullname"class="form-control"><br>
-    	   	  			<label>Email Id :</label>
-    	   	  			<input type="text" name="email"class="form-control"><br>
-    	   	  			<label>Contact :</label>
-    	   	  			<input type="text" name="contact"class="form-control"><br>
-                  <label>Speciality :</label>
-                  <input type="text" name="speciality"class="form-control"><br>
-                   <label>Working hours :</label>
-                  <input type="text" name="hours"class="form-control"><br>
-                  <label>Date Updated:</label>
-                  <input type="date" name="date"class="form-control"><br>
-    	   	  			
-    	   	  			<input type="submit" class="btn btn-primary" name="profile-submit"value= "Update Profile">
-                </form>
+            <a href="home.php"class="btn btn-light">Go Back</a>
+           </div> 
+            <div class="col-md-3">
+              <h3>Patient Appointments</h3>
+            </div>
+            <div class="col-md-8">
+              <form class="form-group"action="appointments_search.php"method="post">
+                <div class="row">
+                <div class="col-md-10"><input type="text" name="search" class="form-control "placeholder="enter your name"></div>
+                <div class="col-md-2"><input type="submit" name="appointments_search_submit"class="btn btn-primary"value="Search"></div></div>
+              </form>
+            </div>
+        </div>
 
-              </div>
+      </div>
 
-   	    </div>
-   </div>
-   <div class="col-md-1"></div>
-</div>  
-   </div>  
-   <div class="profile_info">
-			<img src="../images/.jpg"  >
+      <div class="card-body"style="background-color:#3498DB;color: #ffffff;">
+       <table class="table table-hover">
+         <thead>
+           <tr>
+             
+             <th>First Name</th>
+             <th>Last Name</th>
+             <th>Email Id</th>
+             <th>Contact</th>
+             <th>Date</th>
+              <th>Doctor Appointment</th>
+           </tr>
+         </thead>
+         <tbody>
+          <?php get_patient_appointments(); ?>
+         </tbody>
+       </table>
+      </div>
 
-			<div>
-				<?php  if (isset($_SESSION['user'])) : ?>
-					<strong><?php echo $_SESSION['user']['username']; ?></strong>
+    </div>
 
-					<small>
-						<i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i> 
-						<br>
-						<a href="home.php?logout='1'" style="color: red;">logout</a>
-                       &nbsp; <a href="create_user.php"> + add user</a>
-					</small>
 
-				<?php endif ?>
-			</div>
-		</div>
+
+
+  </div>  
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

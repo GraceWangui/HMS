@@ -1,7 +1,6 @@
-#ab1{
-	border-radius:0;background:url("images/head.jpeg");
-	background-size:cover;height:400px;
-}
+
+
+
 * { margin: 0px; padding: 0px; }
 body {
 	font-size: 120%;
@@ -20,7 +19,7 @@ body {
 	padding: 20px;
 }
 form, .content {
-	width: 80%; /* You can tweak it to you liking */
+	width: 100%; 
 	margin: 0px auto;
 	padding: 20px;
 	border: 1px solid #0473f9;

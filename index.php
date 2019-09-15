@@ -1,5 +1,5 @@
- 
-<!DOCTYPE html>
+ <!DOCTYPE html>
+ <?php include ('func.php');?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -26,9 +26,9 @@
         <a class="nav-link" href="#"></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" method="post" action="search.php">
-      <input class="form-control mr-sm-2" type="text" placeholder="enter contact number" aria-label="Search" name="contact">
-      <input type="submit" class="btn btn-outline-light my-2 my-sm-0 btn btn-outline-light" id="inputbtn" name="search_submit" value="Search">
+    <form class="form-inline my-2 my-lg-0" style="width:40%;" method="post" action="search.php">
+      <input class="form-control mr-sm-2"  type="text" placeholder="enter contact " aria-label="Search" name="contact">
+      <input type="submit" class="btn btn-primary" id="inputbtn" name="patient_search_submit" value="Search">
     </form>
   </div>
 </nav>
@@ -38,8 +38,8 @@
     #inputbtn:hover{cursor:pointer;}
   </style>
   <body style="padding-top:50px;">
- <div class="jumbotron" id="ab1"></div>
-   <div class="container-fluid" style="margin-top:50px;">
+ <div class="jumbotron" style="background:url('images/cardback.jpg') no-repeat;background-size: cover;height: 300px;"></div>
+   <div class="container-fluid" style="margin-top:10px;">
 <div class="row">
   <div class="col-md-3">
 	  	 <div class="list-group">
@@ -47,43 +47,53 @@
 	  	 </div>
 	  	 
          <div class="list-group">
-	  	 	<a href=""class="list-group-item ">Doctors' Information</a>
+	  	 	<a href="doctors_information.php"class="list-group-item ">Doctors Information</a>
 	  	 </div>
 	  	 <div class="list-group">
-	  	 	<a href=""class="list-group-item ">About GoodHealth Hospital</a>
+	  	 	<a href="about_goodhealth.php"class="list-group-item ">About GoodHealth Hospital</a>
 	  	 </div>
    </div> 
    <div class="col-md-8">
-   	  <div class="card">
+   	  <div class="card" >
 	   	  <div class="card-body" style="background-color:#3498DB;color:#ffffff;">
 	   	  	Book an Appointment
 
 	   	  	</div>
-  	   	  	  <div class="card-body">
+  	   	  	  <div class="card-body" >
     	   	  		<form class="form-group"action="func.php"method="post">
+
     	   	  			<label>First Name :</label>
     	   	  			<input type="text" name="fname"class="form-control"><br>
+
     	   	  			<label>Last Name :</label>
     	   	  			<input type="text" name="lname"class="form-control"><br>
+
     	   	  			<label>Email Id :</label>
     	   	  			<input type="text" name="email"class="form-control"><br>
+
     	   	  			<label>Contact :</label>
     	   	  			<input type="text" name="contact"class="form-control"><br>
-    	   	  			<label>Doctor Appointment :</label>
-    	   	  		    <select class="form-control">
-    	   	  		    	
-    	   	  		    	<option value="Dr Ann Wangui">Dr Ann Wangui</option>
-    	   	  		    	<option value="Dr Daniel Mark">Dr Daniel Mark</option>
 
-    	   	  		    </select>
-    	   	  			<br>
+                  <label>Date :</label>
+                  <input type="date" name="date"class="form-control"><br>
+
+    	   	  	    <label>Doctor Appointment :</label>
+                 
+                    <select  class="form-control" name="docapp">
+                      
+                     <!-- <option value="Dr Ann Wangui">Dr Ann Wangui</option>
+                      <option value="Dr Daniel Mark">Dr Daniel Mark</option>--> 
+                        <?php display_docs();?>
+                    </select>
+                 
+                 
     	   	  			<input type="submit" class="btn btn-primary" name="patient-submit"value= "Book Appointment">
                 </form>
 
               </div>
 
    	    </div>
-   </div>
+   </div> 
    <div class="col-md-1"></div>
 </div>  
    </div>  
